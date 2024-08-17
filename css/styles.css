@@ -2,7 +2,7 @@
 .card-body,
 .container,
 .site-header {
-  font-family: "Verdana", serif !important;
+  font-family: 'Verdana', serif !important;
 }
 
 .jumbotron .display-4 {
@@ -33,7 +33,7 @@ nav a {
   padding: 5em inherit;
   margin-bottom: 0;
   background-color: #53c0fb;
-  background: url("../img/cover_back.png");
+  background: url('../img/cover_back.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
