@@ -12,17 +12,29 @@ document.addEventListener('DOMContentLoaded', function () {
       productos.forEach((product) => {
         // Crear el elemento del producto
         const articulo = document.createElement('article');
-        articulo.classList.add('product');
 
         // Rellenar el HTML del producto
         articulo.innerHTML = `
-            <img src="${product.image}" alt="${product.name}">
-            <h2>${product.name}</h2>
-            <p>${product.description}</p>
-            <p class="precio">${product.cost} ${product.currency}</p>
-            <p class="cantidad-vendidos">Vendidos: ${product.soldCount}</p>
-            <button>Comprar</button>
-                `;
+          <div class="list-group-item list-group-item-action cursor-active">
+            <div class="row">
+              <div class="col-3">
+                <img
+                  src="${product.image}"
+                  alt="${product.description}"
+                  class="img-thumbnail"
+                />
+              </div>
+              <div class="col">
+                <div class="d-flex w-100 justify-content-between">
+                  <h4 class="mb-1">${product.name}</h4>
+                  <small class="text-muted">${product.soldCount} artículos</small>
+                </div>
+                <p class="mb-1">${product.description}</p>
+                <p class="text-end fs-5">USD ${product.cost}</p>
+              </div>
+            </div>
+          </div>
+          `;
 
         // Añadir el producto al contenedor
         contenedorProductos.appendChild(articulo);
