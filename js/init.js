@@ -41,3 +41,16 @@ let getJSONData = function (url) {
       return result;
     });
 };
+
+// Función encargada de obtener el valor "user" de lo contrario retorna "null"
+function isLogged() {
+  return sessionStorage.getItem('user');
+}
+
+// Principal ejecución del código
+// Checkea que el valor de isLogged sea true y la pagina en la que se no sea
+// "./login.html", de lo contrario entraría en bucle infinito
+document.addEventListener('DOMContentLoaded', function () {
+  if (!isLogged() && window.location.pathname !== '/login.html')
+    window.location = 'login.html';
+});
