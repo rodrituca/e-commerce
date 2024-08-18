@@ -47,10 +47,16 @@ function isLogged() {
   return sessionStorage.getItem('user');
 }
 
+function getPath() {
+  const split = window.location.href.split('/');
+  const path = split[split.length - 1];
+  return '/' + path;
+}
+
 // Principal ejecución del código
 // Checkea que el valor de isLogged sea true y la pagina en la que se no sea
 // "./login.html", de lo contrario entraría en bucle infinito
 document.addEventListener('DOMContentLoaded', function () {
-  if (!isLogged() && window.location.pathname !== '/login.html')
+  if (!isLogged() && getPath() !== '/login.html')
     window.location = 'login.html';
 });
