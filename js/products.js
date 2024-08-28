@@ -5,8 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
     .then((response) => response.json())
     .then((data) => {
       const contenedorProductos = document.getElementById('products');
-
-      //
       const productos = data.products;
 
       productos.forEach((product) => {

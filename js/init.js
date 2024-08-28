@@ -62,4 +62,11 @@ function checkPage(target) {
 // "./login.html", de lo contrario entraría en bucle infinito
 document.addEventListener('DOMContentLoaded', function () {
   if (!isLogged() && !checkPage('/login.html')) window.location = 'login.html';
+  showUsername();
 });
+
+function showUsername() {
+  console.log(document.querySelector('#user'));
+  const username = sessionStorage.getItem('user');
+  document.querySelector('#user').innerHTML = username;
+}
