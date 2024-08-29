@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         articulo.innerHTML = `
           <div class="list-group-item list-group-item-action cursor-active">
             <div class="row">
-              <div class="col-3">
+              <div class="col-md-4">
                 <img
                   src="${product.image}"
                   alt="${product.description}"

@@ -212,8 +212,8 @@ a.custom-card:hover {
   color: green;
 }
 
-@media (max-width: 575.78px) {
+@media (width > 700px) {
   .img-thumbnail {
-    width: 100px;
+    width: 100%;
   }
 }
