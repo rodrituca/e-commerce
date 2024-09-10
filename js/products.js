@@ -44,3 +44,12 @@ document.addEventListener('DOMContentLoaded', function () {
       alert('Error al cargar los productos:', error);
     });
 });
+
+ function filtrarPrecio(products, precioMin, precioMax){
+   return products.filter(product => {
+     return product.cost >= precioMin && product.cost <= precioMax;
+   });
+ };
+ const productosFiltradosPorPrecio = filtrarPrecio(products, 12000, 15000);
+
+console.log(productosFiltradosPorPrecio);
