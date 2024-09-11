@@ -1,3 +1,7 @@
+import { CATEGORIES_URL } from './constants/API.js';
+import getJSONData from './utils/getJSONData.js';
+import addEvents from './utils/addEvents.js';
+
 const ORDER_ASC_BY_NAME = 'AZ';
 const ORDER_DESC_BY_NAME = 'ZA';
 const ORDER_BY_PROD_COUNT = 'Cant.';
@@ -46,11 +50,6 @@ function sortCategories(criteria, array) {
   return result;
 }
 
-function setCatID(id) {
-  localStorage.setItem('catID', id);
-  window.location = 'products.html';
-}
-
 function showCategoriesList() {
   let htmlContentToAppend = '';
   for (let i = 0; i < currentCategoriesArray.length; i++) {
@@ -64,7 +63,7 @@ function showCategoriesList() {
         (maxCount != undefined && parseInt(category.productCount) <= maxCount))
     ) {
       htmlContentToAppend += `
-            <div onclick="setCatID(${category.id})" class="list-group-item list-group-item-action cursor-active">
+            <div class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-3">
                         <img src="${category.imgSrc}" alt="${category.description}" class="img-thumbnail">
@@ -110,6 +109,8 @@ document.addEventListener('DOMContentLoaded', function (e) {
     if (resultObj.status === 'ok') {
       currentCategoriesArray = resultObj.data;
       showCategoriesList();
+      const categories = document.querySelectorAll('.list-group-item');
+      addEvents(categories, { category: true });
       //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
     }
   });
