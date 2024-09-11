@@ -9,13 +9,13 @@ function setProductID(id) {
 }
 
 export default function addEvents(elementsArray, type) {
-  // const isNodeList = NodeList.prototype.isPrototypeOf(elementsArray);
-  // const arr = isNodeList ? Array.from(elementsArray) : elementsArray;
+  const isNodeList = NodeList.prototype.isPrototypeOf(elementsArray);
+  const array = isNodeList ? Array.from(elementsArray) : elementsArray;
 
-  const arr = Array.from(elementsArray);
+  array.forEach((item) =>
+    item.addEventListener('click', function (e) {
+      e.preventDefault();
 
-  arr.forEach((item) =>
-    document.addEventListener('click', function () {
       if (type.category) {
         setCatID(item.id);
       }

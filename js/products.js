@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   showProducts(data);
 
-  let productElements =
+  const productElements =
     contenedorProductos.querySelectorAll('.list-group-item');
   addEvents(productElements, { product: true });
 });
