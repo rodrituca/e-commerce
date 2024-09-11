@@ -10,7 +10,8 @@
     "tailwindcss": "3.4.10"
   },
   "scripts": {
-    "format": "npx prettier . --write"
+    "forma": "npx prettier . --write",
+    "lint": "npx eslint ."
   },
   "keywords": [],
   "author": "",
