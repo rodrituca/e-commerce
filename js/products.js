@@ -1,46 +1,48 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const url = 'https://japceibal.github.io/emercado-api/cats_products/101.json';
+import getJSONData from './utils/getJSONData.js';
+import addEvents from './utils/addEvents.js';
 
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      const contenedorProductos = document.getElementById('products');
-      const productos = data.products;
+const contenedorProductos = document.getElementById('products');
 
-      productos.forEach((product) => {
-        // Crear el elemento del producto
-        const articulo = document.createElement('article');
+document.addEventListener('DOMContentLoaded', async function () {
+  const URL = 'https://japceibal.github.io/emercado-api/cats_products/101.json';
+  const { data } = await getJSONData(URL);
 
-        // Rellenar el HTML del producto
-        articulo.innerHTML = `
-          <div class="list-group-item list-group-item-action cursor-active">
-            <div class="row">
-              <div class="col-md-4">
-                <img
-                  src="${product.image}"
-                  alt="${product.description}"
-                  class="img-thumbnail"
-                />
-              </div>
-              <div class="col">
-                <div class="d-flex w-100 justify-content-between">
-                  <h4 class="mb-1">${product.name}</h4>
-                  <small class="text-muted">${product.soldCount} artículos</small>
-                </div>
-                <p class="mb-1">${product.description}</p>
-                <p class="text-end fs-5">USD ${product.cost}</p>
-              </div>
-            </div>
-          </div>
-          `;
+  showProducts(data);
 
-        // Añadir el producto al contenedor
-        contenedorProductos.appendChild(articulo);
-      });
-    })
-
-    // Pop Up de error
-    .catch((error) => {
-      alert('Error al cargar los productos:', error);
-    });
+  const productElements =
+    contenedorProductos.querySelectorAll('.list-group-item');
+  addEvents(productElements, { product: true });
 });
+
+function showProducts(data) {
+  const { products } = data;
+  products.forEach((product) => {
+    // Crear el elemento del producto
+    const articulo = document.createElement('article');
+
+    articulo.innerHTML = `
+    <div id=${product.id} class="list-group-item list-group-item-action cursor-active">
+      <div class="row">
+        <div class="col-md-4">
+          <img
+            src="${product.image}"
+            alt="${product.description}"
+            class="img-thumbnail"
+          />
+        </div>
+        <div class="col">
+          <div class="d-flex w-100 justify-content-between">
+            <h4 class="mb-1">${product.name}</h4>
+            <small class="text-muted">${product.soldCount} artículos</small>
+          </div>
+          <p class="mb-1">${product.description}</p>
+          <p class="text-end fs-5">USD ${product.cost}</p>
+        </div>
+      </div>
+    </div>
+    `;
+
+    // Añadir el producto al contenedor
+    contenedorProductos.appendChild(articulo);
+  });
+}
