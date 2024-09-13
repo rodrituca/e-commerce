@@ -1,6 +1,7 @@
 import getJSONData from './utils/getJSONData.js';
 import addEvents from './utils/addEvents.js';
 import { sortCategories, options } from './utils/sortList.js';
+import { PRODUCTS_URL, EXT_TYPE } from './constants/API.js';
 
 let {
   ORDER_ASC_BY_NAME,
@@ -15,8 +16,8 @@ let {
 const contenedorProductos = document.getElementById('products');
 
 document.addEventListener('DOMContentLoaded', async function () {
-  const URL = 'https://japceibal.github.io/emercado-api/cats_products/101.json';
-  const { data } = await getJSONData(URL);
+  const catID = localStorage.getItem('catID');
+  const { data } = await getJSONData(PRODUCTS_URL + catID + EXT_TYPE);
 
   showProducts(data);
   const productElements =
