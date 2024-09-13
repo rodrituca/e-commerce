@@ -1,7 +1,7 @@
 import { CATEGORIES_URL } from './constants/API.js';
 import getJSONData from './utils/getJSONData.js';
 import addEvents from './utils/addEvents.js';
-import { sortCategories, options } from './utils/sortList.js';
+import { sortList, options } from './utils/sortList.js';
 
 let {
   ORDER_ASC_BY_NAME,
@@ -55,7 +55,7 @@ function sortAndShowCategories(sortCriteria, categoriesArray) {
     currentCategoriesArray = categoriesArray;
   }
 
-  currentCategoriesArray = sortCategories(
+  currentCategoriesArray = sortList(
     currentSortCriteria,
     currentCategoriesArray,
   );
