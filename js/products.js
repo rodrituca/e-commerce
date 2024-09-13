@@ -9,6 +9,7 @@ let {
   ORDER_ASC_BY_PRICE,
   ORDER_DESC_BY_PRICE,
   ORDER_BY_PROD_COUNT,
+  ORDER_BY_RANGE,
   minCount,
   maxCount,
 } = options;
@@ -121,15 +122,23 @@ document.addEventListener('DOMContentLoaded', async function () {
       if (minCount != undefined && minCount != '' && parseInt(minCount) >= 0) {
         minCount = parseInt(minCount);
       } else {
-        minCount = undefined;
+        minCount = 0;
       }
 
       if (maxCount != undefined && maxCount != '' && parseInt(maxCount) >= 0) {
         maxCount = parseInt(maxCount);
       } else {
-        maxCount = undefined;
+        maxCount = 0;
       }
 
-      showProducts(data);
+      const range = { from: minCount, to: maxCount };
+
+      const productsElements = document.querySelectorAll('.list-group-item');
+      deleteDOMElements(productsElements);
+      const sortedArray = sortList(ORDER_BY_RANGE, data.products, range);
+      showProducts(sortedArray);
+      addEvents(document.querySelectorAll('.list-group-item'), {
+        product: true,
+      });
     });
 });

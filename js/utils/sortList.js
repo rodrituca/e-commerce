@@ -4,13 +4,14 @@ const options = {
   ORDER_ASC_BY_PRICE: '12',
   ORDER_DESC_BY_PRICE: '21',
   ORDER_BY_PROD_COUNT: 'Cant.',
+  ORDER_BY_RANGE: 'RANGE',
   currentCategoriesArray: [],
   currentSortCriteria: undefined,
   minCount: undefined,
   maxCount: undefined,
 };
 
-function sortList(criteria, array) {
+function sortList(criteria, array, range) {
   let newArray = array.slice(0, array.length);
   let result = [];
   if (criteria === options.ORDER_ASC_BY_NAME) {
@@ -70,6 +71,9 @@ function sortList(criteria, array) {
       }
       return 0;
     });
+  } else if (criteria === 'RANGE') {
+    const { from, to } = range;
+    result = newArray.filter((item) => item.cost >= from && item.cost <= to);
   }
 
   return result;
