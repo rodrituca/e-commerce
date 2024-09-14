@@ -12,3 +12,5 @@ document.addEventListener('DOMContentLoaded', async function () {
   const dataJSON = await getJSONData(PRODUCT_INFO_URL + productID + EXT_TYPE);
   const { data } = dataJSON;
 });
+
+
