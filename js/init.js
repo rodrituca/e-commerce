@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function showUsername() {
-  console.log(document.querySelector('#user'));
   const username = sessionStorage.getItem('user');
   document.querySelector('#user').innerHTML = username;
 }
