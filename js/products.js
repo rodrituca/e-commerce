@@ -10,11 +10,13 @@ let {
   ORDER_DESC_BY_PRICE,
   ORDER_BY_PROD_COUNT,
   ORDER_BY_RANGE,
+  FILTER,
   minCount,
   maxCount,
 } = options;
 
 const contenedorProductos = document.getElementById('products');
+const searchInput = document.querySelector('#searchProduct');
 
 function showProducts(data) {
   const IsArray = data instanceof Array;
@@ -108,7 +110,10 @@ document.addEventListener('DOMContentLoaded', async function () {
       minCount = undefined;
       maxCount = undefined;
 
+      const productsElements = document.querySelectorAll('.list-group-item');
+      deleteDOMElements(productsElements);
       showProducts(data);
+      searchInput.value = '';
     });
 
   document
@@ -131,14 +136,24 @@ document.addEventListener('DOMContentLoaded', async function () {
         maxCount = 0;
       }
 
-      const range = { from: minCount, to: maxCount };
+      const rangeObj = { from: minCount, to: maxCount };
 
       const productsElements = document.querySelectorAll('.list-group-item');
       deleteDOMElements(productsElements);
-      const sortedArray = sortList(ORDER_BY_RANGE, data.products, range);
+      const sortedArray = sortList(ORDER_BY_RANGE, data.products, {
+        range: rangeObj,
+      });
       showProducts(sortedArray);
       addEvents(document.querySelectorAll('.list-group-item'), {
         product: true,
       });
     });
+
+  searchInput.addEventListener('input', (e) => {
+    const { value } = e.target;
+    const productsElements = document.querySelectorAll('.list-group-item');
+    deleteDOMElements(productsElements);
+    const filteredList = sortList(FILTER, data.products, { search: value });
+    showProducts(filteredList);
+  });
 });
