@@ -78,9 +78,11 @@ function sortList(criteria, array, opt) {
   } else if (criteria === options.FILTER) {
     const { search } = opt;
     console.log(search);
-    result = newArray.filter((item) => {
-      return item.name.toLowerCase().includes(search);
-    });
+    result = newArray.filter(
+      (item) =>
+        item.name.toLowerCase().includes(search) ||
+        item.description.toLowerCase().includes(search),
+    );
   }
 
   return result;
