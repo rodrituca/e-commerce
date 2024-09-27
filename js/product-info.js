@@ -3,8 +3,9 @@
 // </div>
 
 import getJSONData from './utils/getJSONData.js';
-import { PRODUCT_INFO_URL, EXT_TYPE } from './constants/API.js';
+import { PRODUCT_INFO_URL, EXT_TYPE, PRODUCT_INFO_COMMENTS_URL} from './constants/API.js';
 
+//Fetch para el carrusel
 document.addEventListener('DOMContentLoaded', async function () {
   const productID = localStorage.getItem('productID');
   const dataJSON = await getJSONData(PRODUCT_INFO_URL + productID + EXT_TYPE);
@@ -22,6 +23,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   const productCurrencyHTMLElement = document.querySelector('#productCurrency');
   const productCostHTMLElement = document.querySelector('#productCost');
 
+
   const carouselObject = {
     name: productNameHTMLElement,
     soldCount: productCountHTMLElement,
@@ -31,6 +33,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     currency: productCurrencyHTMLElement,
     cost: productCostHTMLElement,
   };
+
 
   for (const item in data) {
     console.log(item);
@@ -55,4 +58,40 @@ document.addEventListener('DOMContentLoaded', async function () {
       carouselObject[item] = carouselObject[item].innerHTML += data[item];
     }
   }
-});
+
+//Mostrar los comentarios
+const dataComments = await getJSONData(PRODUCT_INFO_COMMENTS_URL + productID + EXT_TYPE);
+const { data: comments } = dataComments;
+
+function mostrarComentarios(comentarios) {
+const contenedor = document.getElementById("commentsBox");
+  contenedor.innerHTML = '';
+
+   comentarios.forEach(comentario => {
+    const divComentario = document.createElement('div');
+    divComentario.classList.add('comentario', 'container');
+    divComentario.innerHTML = `<div class="card-body">
+                               <h5 class="card-title">${comentario.user}</h5>
+                               <h6 class="card-subtitle mb-2 text-muted">${comentario.dateTime}</h6>
+                               <p class="card-text">${comentario.description}</p>
+                               <div class="card-footer">Puntuación: ${comentario.score}</div>
+                               </div>
+                               `
+    contenedor.appendChild(divComentario);
+  });
+}
+
+mostrarComentarios(comments);
+
+
+//Sistema de calificación con Estrellitas
+document.querySelectorAll('.rating span').forEach((star, index) => {
+
+  star.addEventListener('click', () => {
+    document.querySelectorAll('.rating span').forEach((s, i) => {
+    s.classList.toggle('checked', i <= index);
+      });
+  });
+
+
+});})
