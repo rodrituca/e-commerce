@@ -66,7 +66,7 @@ function deleteDOMElements(className) {
     item.remove();
   });
 }
-
+// Filtro de gabi
 document.addEventListener('DOMContentLoaded', async function () {
   const catID = localStorage.getItem('catID');
   const jsonData = await getJSONData(PRODUCTS_URL + catID + EXT_TYPE);
