@@ -64,27 +64,44 @@ const dataComments = await getJSONData(PRODUCT_INFO_COMMENTS_URL + productID + E
 const { data: comments } = dataComments;
 
 function mostrarComentarios(comentarios) {
-const contenedor = document.getElementById("commentsBox");
+  const contenedor = document.getElementById("commentsBox");
   contenedor.innerHTML = '';
 
-   comentarios.forEach(comentario => {
+  comentarios.forEach(comentario => {
     const divComentario = document.createElement('div');
     divComentario.classList.add('comentario', 'container');
     divComentario.innerHTML = `<div class="card-body">
                                <h5 class="card-title">${comentario.user}</h5>
                                <h6 class="card-subtitle mb-2 text-muted">${comentario.dateTime}</h6>
                                <p class="card-text">${comentario.description}</p>
-                               <div class="card-footer">Puntuación: ${comentario.score}</div>
-                               </div>
-                               `
+                               <div class="card-footer">Puntuación: ${obtenerEstrellas(comentario.score)}</div>
+                               </div>`;
     contenedor.appendChild(divComentario);
+  });
+
+  // Agregar el comentario a la lista de calificaciones
+  const botonEnv = document.getElementById('btnEnv');
+  botonEnv.addEventListener("click", function() {
+    const comentarioTexto = document.getElementById('comentario').value;
+    const score = 5; // Acá después ponemos el score correspondiente a las estrellitas (todavía no sabemos como hacerlo)
+
+    const comentarioNuevo = document.createElement("div");
+    comentarioNuevo.classList.add('comentario', 'container');
+    comentarioNuevo.innerHTML = `<div class="card-body">
+                                 <h5 class="card-title">${localStorage.userName}</h5>
+                                 <h6 class="card-subtitle mb-2 text-muted">${fechaHora}</h6>
+                                 <p class="card-text">${comentarioTexto}</p>
+                                 <div class="card-footer">Puntuación: ${obtenerEstrellas(score)}</div>
+                                 </div>`;
+
+    contenedor.appendChild(comentarioNuevo);
+    document.getElementById('comentario').value = '';
   });
 }
 
 mostrarComentarios(comments);
 
-
-//Sistema de calificación con Estrellitas
+// Sistema de calificación con Estrellitas
 document.querySelectorAll('.rating span').forEach((star, index) => {
 
   star.addEventListener('click', () => {
@@ -95,3 +112,34 @@ document.querySelectorAll('.rating span').forEach((star, index) => {
 
 
 });})
+
+// Obtener estrellitas de calificaciones
+function obtenerEstrellas(calificacion){
+  let estrellas = "";
+  let stars = Math.round(calificacion);
+  for(let i = 0; i < stars; i++){
+      estrellas+=`<span class="fa fa-star checked"></span>`;
+  }
+  for(let i = stars; i < 5; i++){
+      estrellas+=`<span class="fa fa-star"></span>`;
+  }
+
+  return estrellas;
+}
+
+// Constantes de horas que sacamos con chatgpt porque genuinamente no sabemos como hacer esto de manera organica. Disculpanos profe. <3
+const ahora = new Date();
+const anio = ahora.getFullYear();
+const mes = String(ahora.getMonth() + 1).padStart(2, '0');
+const dia = String(ahora.getDate()).padStart(2, '0');
+const horas = String(ahora.getHours()).padStart(2, '0');
+const minutos = String(ahora.getMinutes()).padStart(2, '0');
+const segundos = String(ahora.getSeconds()).padStart(2, '0');
+const fechaHora = `${anio}-${mes}-${dia} ${horas}:${minutos}:${segundos}`;
+
+
+async function relatedProducts() {
+  getJSONData(PRODUCTS_URL)
+  productos = await respuesta.json();
+
+}
