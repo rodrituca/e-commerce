@@ -1,7 +1,3 @@
-//   <div class="carousel-item active">
-//   <img src="img/car1.jpg" class="d-block w-100" alt="..." />
-// </div>
-
 import getJSONData from './utils/getJSONData.js';
 import { PRODUCT_INFO_URL, EXT_TYPE, PRODUCT_INFO_COMMENTS_URL} from './constants/API.js';
 
@@ -38,7 +34,6 @@ document.addEventListener('DOMContentLoaded', async function () {
   for (const item in data) {
     console.log(item);
     console.log(data[item]);
-    // console.log(carouselObject[item]);
     if (carouselObject[item]) {
       if (data[item] instanceof Array) {
         const array = data[item];
@@ -83,12 +78,12 @@ function mostrarComentarios(comentarios) {
   const botonEnv = document.getElementById('btnEnv');
   botonEnv.addEventListener("click", function() {
     const comentarioTexto = document.getElementById('comentario').value;
-    const score = 5; // Acá después ponemos el score correspondiente a las estrellitas (todavía no sabemos como hacerlo)
+    const score = 5; // Acá después ponemos el score correspondiente a las estrellitas que enviamos (todavía no sabemos como hacerlo)
 
     const comentarioNuevo = document.createElement("div");
     comentarioNuevo.classList.add('comentario', 'container');
     comentarioNuevo.innerHTML = `<div class="card-body">
-                                 <h5 class="card-title">${localStorage.userName}</h5>
+                                 <h5 class="card-title">${sessionStorage.user}</h5>
                                  <h6 class="card-subtitle mb-2 text-muted">${fechaHora}</h6>
                                  <p class="card-text">${comentarioTexto}</p>
                                  <div class="card-footer">Puntuación: ${obtenerEstrellas(score)}</div>
@@ -127,7 +122,7 @@ function obtenerEstrellas(calificacion){
   return estrellas;
 }
 
-// Constantes de horas que sacamos con chatgpt porque genuinamente no sabemos como hacer esto de manera organica. Disculpanos profe. <3
+// Constantes de horas que sacamos con chatgpt porque genuinamente no sabemos como hacer esto. Disculpanos profe. <3
 const ahora = new Date();
 const anio = ahora.getFullYear();
 const mes = String(ahora.getMonth() + 1).padStart(2, '0');
@@ -138,8 +133,39 @@ const segundos = String(ahora.getSeconds()).padStart(2, '0');
 const fechaHora = `${anio}-${mes}-${dia} ${horas}:${minutos}:${segundos}`;
 
 
-async function relatedProducts() {
-  getJSONData(PRODUCTS_URL)
-  productos = await respuesta.json();
+// Sección de productos relacionados
+document.addEventListener('DOMContentLoaded', function () {
+  const productID = localStorage.getItem('productID');
+  const productURL = `https://japceibal.github.io/emercado-api/products/${productID}.json`;
 
-}
+  fetch(productURL)
+    .then(response => response.json())
+    .then(productData => {
+      console.log('Producto:', productData);
+      const relatedProducts = productData.relatedProducts || [];
+      const cards = [
+        document.getElementById("relatedProducts1"),
+        document.getElementById("relatedProducts2"),
+      ];
+      const numProductsToShow = Math.min(relatedProducts.length, cards.length);
+
+      for (let i = 0; i < numProductsToShow; i++) {
+        const producto = relatedProducts[i];
+        const card = cards[i]; 
+        const imagen = card.querySelector("img"); 
+        const nombre = card.querySelector("h3"); 
+
+        imagen.src = producto.image; 
+        imagen.alt = `Imagen de ${producto.name}`; 
+        nombre.textContent = producto.name; 
+
+        card.dataset.id = producto.id;
+        card.addEventListener('click', function() {
+          localStorage.setItem('productID', producto.id);
+          window.location.href = 'product-info.html'; });
+      }
+    })
+    .catch(error => {
+     console.error('Error:', error);
+    });
+});
