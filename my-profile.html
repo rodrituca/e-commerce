@@ -65,11 +65,77 @@
       </div>
     </nav>
     <main>
-      <div class="container">
-        <div class="alert alert-danger text-center" role="alert">
-          <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+   <!-- Contenedor para título y switch -->
+   <div class="container d-flex align-items-center justify-content-between mt-3">
+    <!-- Switch de modo día/noche (al costado izquierdo del título) -->
+    <div class="form-check form-switch me-3">
+      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
+      <label class="form-check-label" for="flexSwitchCheckDefault">Modo Noche</label>
+    </div>
+
+    <!-- Título de la sección, centrado -->
+    <h4 class="alert-heading mx-auto mb-0">Perfil de Usuario</h4>
+  <br>
+    <p class="alert-heading">Foto de perfil</p>
+  </div>
+
+  <!--<div class="container d-flex flex-column align-items-center mt-3"-->
+       
+        <!-- Círculo para la foto de perfil -->
+        <div class="rounded-circle border border-dark mx-auto" style="width: 150px; height: 150px; background-color: #f8f9fa;">
+          <!-- Agregar foto -->
+          <img src="Foto de perfil.webp" alt="Foto de perfil" class="rounded-circle" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
       </div>
+    <div class="container mt-5">
+
+      <!--Estructura del formulario-->
+      <form>
+        <div class="row">
+          <!-- Nombre -->
+          <div class="col-md-6 mb-3">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Escribe aquí..." aria-label="Nombre">
+          </div>
+  
+          <!--Segundo nombre -->
+          <div class="col-md-6 mb-3">
+            <label for="segundoNombre">Segundo nombre</label>
+            <input type="text" class="form-control" id="segundoNombre" placeholder="Escribe aquí..." aria-label="Segundo nombre">
+          </div>
+  
+          <!--Apellido -->
+          <div class="col-md-6 mb-3">
+            <label for="apellido">Apellido</label>
+            <input type="text" class="form-control" id="apellido" placeholder="Escribe aquí..." aria-label="Apellido">
+          </div>
+  
+          <!--Segundo apellido -->
+          <div class="col-md-6 mb-3">
+            <label for="segundoApellido">Segundo apellido</label>
+            <input type="text" class="form-control" id="segundoApellido" placeholder="Escribe aquí..." aria-label="Segundo apellido">
+          </div>
+  
+          <!--E-mail -->
+          <div class="col-md-6 mb-3">
+            <label for="email">E-mail</label>
+            <input type="email" class="form-control" id="email" placeholder="Escribe aquí..." aria-label="E-mail">
+          </div>
+  
+          <!--Teléfono-->
+          <div class="col-md-6 mb-3">
+            <label for="telefono">Teléfono de contacto</label>
+            <input type="tel" class="form-control" id="telefono" placeholder="Escribe aquí..." aria-label="Teléfono de contacto">
+          </div>
+        </div>
+  
+        <!--Botón-->
+        <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-warning text-white">Guardar cambios</button>
+        </div>
+      </form>
+    </div>
+
     </main>
     <footer class="text-muted">
       <div class="container">
