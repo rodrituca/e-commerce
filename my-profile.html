@@ -56,40 +56,38 @@
             <li class="nav-item">
               <a class="nav-link" href="sell.html">Vender</a>
             </li>
+          <!--Menú desplegable con el nombre de usuario-->
             <li class="nav-item">
-              <a class="nav-link" id="user"></a>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="nav-link" id="user"></a>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="">Mi carrito</a></li>
+                  <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+                  <li><a class="dropdown-item" href="login.html">Cerrar sesión</a></li>
+                </ul>
+              </div>
             </li>
-            <li class="nav-item"></li>
           </ul>
         </div>
       </div>
     </nav>
-    <main>
-   <!-- Contenedor para título y switch -->
-   <div class="container d-flex align-items-center justify-content-between mt-3">
-    <!-- Switch de modo día/noche (al costado izquierdo del título) -->
-    <div class="form-check form-switch me-3">
-      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
-      <label class="form-check-label" for="flexSwitchCheckDefault">Modo Noche</label>
-    </div>
-
-    <!-- Título de la sección, centrado -->
-    <h4 class="alert-heading mx-auto mb-0">Perfil de Usuario</h4>
-  <br>
-    <p class="alert-heading">Foto de perfil</p>
-  </div>
-
-  <!--<div class="container d-flex flex-column align-items-center mt-3"-->
-       
-        <!-- Círculo para la foto de perfil -->
+    <main>  
+    <!-- Título -->
+    <div class="container text-center mt-3">
+      <h4 class="alert-heading mb-3">Perfil de Usuario</h4>
+      <!-- Círculo para la foto de perfil -->
+         <div class="d-flex justify-content-center"> 
         <div class="rounded-circle border border-dark mx-auto" style="width: 150px; height: 150px; background-color: #f8f9fa;">
-          <!-- Agregar foto -->
+      <!-- Agregado de la foto -->
           <img src="Foto de perfil.webp" alt="Foto de perfil" class="rounded-circle" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
       </div>
-    <div class="container mt-5">
+    </div>
 
       <!--Estructura del formulario-->
+      <div class="container mt-5">
       <form>
         <div class="row">
           <!-- Nombre -->

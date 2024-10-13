@@ -1,6 +1,30 @@
 import getJSONData from './utils/getJSONData.js';
 import { PRODUCT_INFO_URL, EXT_TYPE, PRODUCT_INFO_COMMENTS_URL} from './constants/API.js';
 
+//Botón Switch
+const switchButton = document.getElementById('BtnSwitch');
+const modoDiaNoche = localStorage.getItem('modo');
+
+if (modoDiaNoche === 'noche') {
+  document.body.classList.add('bg-dark', 'text-white');
+  switchButton.checked = true;
+} else {
+  document.body.classList.add('bg-light', 'text-dark');
+}
+
+// Cambiar entre Modo Día y Modo Noche
+switchButton.addEventListener('change', function() {
+  if (this.checked) {
+    document.body.classList.remove('bg-light', 'text-dark');
+    document.body.classList.add('bg-dark', 'text-white');
+    localStorage.setItem('modo', 'noche');
+  } else {
+    document.body.classList.remove('bg-dark', 'text-white');
+    document.body.classList.add('bg-light', 'text-dark');
+    localStorage.setItem('modo', 'dia');
+  }
+});
+
 //Fetch para el carrusel
 document.addEventListener('DOMContentLoaded', async function () {
   const productID = localStorage.getItem('productID');

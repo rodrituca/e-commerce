@@ -17,7 +17,7 @@
     <link href="css/styles.css" rel="stylesheet" />
   </head>
 
-  <body>
+  <body class="bg-light text-dark">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
       <div class="container">
         <button
@@ -42,15 +42,30 @@
             <li class="nav-item">
               <a class="nav-link" href="sell.html">Vender</a>
             </li>
+            <!--Menú desplegable con el nombre de usuario-->
             <li class="nav-item">
-              <a class="nav-link" id="user"></a>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="nav-link" id="user"></a>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Mi carrito</a></li>
+                  <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+                  <li><a class="dropdown-item" href="login.html">Cerrar sesión</a></li>
+                </ul>
+              </div>
             </li>
-            <li class="nav-item"></li>
           </ul>
         </div>
       </div>
     </nav>
-
+  <!-- Botón Switch de modo día/noche -->
+  <div class="container text-center mt-3">
+    <div class="form-check form-switch d-flex align-items-center">
+      <input class="form-check-input me-2" type="checkbox" id="BtnSwitch" />
+      <label class="form-check-label" for="BtnSwitch">Modo Día/Noche</label>
+    </div>
+  </div>
     <main>
       <!-- Categoría, nombre y vendidos -->
       <div class="container pt-3">
