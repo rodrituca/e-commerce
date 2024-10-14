@@ -106,18 +106,15 @@
         </div>
       </div>
 
-      <!-- Tarjeta con descripción del producto. -->
-      <div class="container d-flex justify-content-center p-3">
-        <div class="d-flex align-items-center">
-          <div
-            class="card text-bg-primary text-center"
-            style="max-width: 40rem"
-          >
-            <div class="card-header">Descripción</div>
-            <div class="card-body">
-              <p class="card-text" id="productDescription"></p>
-            </div>
-          </div>
+     <!-- Tarjeta con descripción del producto -->
+<div class="container d-flex justify-content-center p-3">
+  <div class="d-flex align-items-center">
+    <div class="card text-bg-primary text-center" style="max-width: 40rem">
+      <div class="card-header text-black">Descripción</div>
+      <div class="card-body">
+        <p class="card-text text-black" id="productDescription"></p>
+      </div>
+    </div>
 
           <!-- Precio y botón de compra. -->
           <div class="text-center mt-3">
@@ -135,7 +132,7 @@
       </div>
     </main>
 
-
+<!--Calificación con estrellas y escribir comentario-->
     <div id="stars" class="container">
       <h3>Calificá nuestro producto</h3>
       <div class="rating">
@@ -146,13 +143,12 @@
           <span class="fa fa-star"></span>
       </div>
   </div>
-  
   <div class="container mt-3 d-flex flex-column">
       <div class="d-flex align-items-start">
         <textarea id= "comentario" class="form-control me-2 col-12" rows="5" style="width: 600px;"></textarea>
         <button type="button" id="btnEnv" class="btn btn-warning align-self-end">Enviar</button>
       </div>
-      
+  <!--Mostrar comentarios-->
       <h3 class="mt-3">Comentarios</h3>
       <div id="commentsBox">
       </div>
@@ -166,15 +162,15 @@
         <div class="row justify-content-center">
           <div class="col-md-4">
             <div class="card mb-4 shadow-sm custom-card cursor-active" id="relatedProducts1">
-              <img class="card-img-top" src="" alt="Producto relacionado2"/>
-              <h3 class="m-3 text-center">nombre producto</h3>
+              <img class="card-img-top img-fluid" src="" alt="Producto relacionado2"/>
+              <h3 class="m-3 text-center text-black">nombre producto</h3>
             </div>
           </div>
 
           <div class="col-md-4">
             <div class="card mb-4 shadow-sm custom-card cursor-active" id="relatedProducts2">
-              <img class="card-img-top" src="" alt="Producto relacionado2"/>
-              <h3 class="m-3 text-center">nombre producto</h3>
+              <img class="card-img-top" src="" alt="Producto relacionado" />
+              <h3 class="m-3 text-center text-black">nombre producto</h3>
             </div>
           </div>
 

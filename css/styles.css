@@ -217,3 +217,25 @@ a.custom-card:hover {
     width: 100%;
   }
 }
+
+/* Modo oscuro */
+.bg-dark {
+  background-color: #343a40;
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.bg-light {
+  background-color: #f8f9fa;
+}
+
+.text-dark {
+  color: #212529;
+}
+
+.text-black {
+  color: black;
+}
+
