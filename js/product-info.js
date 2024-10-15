@@ -1,6 +1,39 @@
 import getJSONData from './utils/getJSONData.js';
 import { PRODUCT_INFO_URL, EXT_TYPE, PRODUCT_INFO_COMMENTS_URL} from './constants/API.js';
 
+//Botón Switch
+const switchButton = document.getElementById('BtnSwitch');
+//Sirve para saber en que modo se encuentra
+const modoDiaNoche = localStorage.getItem('modo');
+
+//Si el modo actual es noche, se aplica el modo oscuro
+if (modoDiaNoche === 'noche') {
+  document.body.classList.add('bg-dark', 'text-white');
+  //El botón queda activado
+  switchButton.checked = true;
+  //Sino se aplica el modo claro(día)
+} else {
+  document.body.classList.add('bg-light', 'text-dark');
+}
+
+// Función para cambiar el modo día/noche
+function cambiar() {
+  const activado = switchButton.checked;
+  //Si está activado = modo oscuro
+  if (activado) {
+    document.body.classList.remove('bg-light', 'text-dark');
+    document.body.classList.add('bg-dark', 'text-white');
+    localStorage.setItem('modo', 'noche');
+    //Si no está activado = modo claro
+  } else {
+    document.body.classList.remove('bg-dark', 'text-white');
+    document.body.classList.add('bg-light', 'text-dark');
+    localStorage.setItem('modo', 'dia');
+  }
+}
+//Agregamos la función cambiar al evento click
+switchButton.addEventListener('change', cambiar);
+
 //Fetch para el carrusel
 document.addEventListener('DOMContentLoaded', async function () {
   const productID = localStorage.getItem('productID');
@@ -43,7 +76,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             index === 0 ? 'carousel-item active' : 'carousel-item';
           const img = document.createElement('img');
           img.src = arrayItem;
-          img.className = 'd-block w-100';
+          img.className = 'd-block w-80 mx-auto img-fluid';
           div.appendChild(img);
           productImageContainerHTMLElement.appendChild(div);
         });
