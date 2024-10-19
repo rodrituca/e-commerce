@@ -32,8 +32,18 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav w-100 justify-content-between">
+          <ul class="navbar-nav w-100 d-flex justify-content-between align-items-center">
             <li class="nav-item">
+                <!-- Botón Switch de modo día/noche -->
+  <div class="container text-center mt-3">
+    <div class="form-check form-switch d-flex align-items-center">
+      <input class="form-check-input me-2" type="checkbox" id="BtnSwitch" />
+       <label class="nav-link" for="BtnSwitch">Modo Día/Noche</label>
+         </div>
+           </div>
+            </li>
+
+            <li class="nav-item ">
               <a class="nav-link" href="index.html">Inicio</a>
             </li>
             <li class="nav-item">
@@ -49,7 +59,7 @@
                   <a class="nav-link" id="user"></a>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Mi carrito</a></li>
+                  <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
                   <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
                   <li><a class="dropdown-item" href="login.html">Cerrar sesión</a></li>
                 </ul>
@@ -59,13 +69,7 @@
         </div>
       </div>
     </nav>
-  <!-- Botón Switch de modo día/noche -->
-  <div class="container text-center mt-3">
-    <div class="form-check form-switch d-flex align-items-center">
-      <input class="form-check-input me-2" type="checkbox" id="BtnSwitch" />
-      <label class="form-check-label" for="BtnSwitch">Modo Día/Noche</label>
-    </div>
-  </div>
+
     <main>
       <!-- Categoría, nombre y vendidos -->
       <div class="container pt-3">
@@ -110,9 +114,9 @@
 <div class="container d-flex justify-content-center p-3">
   <div class="d-flex align-items-center">
     <div class="card text-bg-primary text-center" style="max-width: 40rem">
-      <div class="card-header text-black">Descripción</div>
+      <div class="card-header ">Descripción</div>
       <div class="card-body">
-        <p class="card-text text-black" id="productDescription"></p>
+        <p class="card-text " id="productDescription"></p>
       </div>
     </div>
 
@@ -161,16 +165,16 @@
     <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-4">
-            <div class="card mb-4 shadow-sm custom-card cursor-active" id="relatedProducts1">
+            <div class="card-body mb-4 shadow-sm custom-card cursor-active" id="relatedProducts1">
               <img class="card-img-top img-fluid" src="" alt="Producto relacionado2"/>
-              <h3 class="m-3 text-center text-black">nombre producto</h3>
+              <h3 class="m-3 text-center">nombre producto</h3>
             </div>
           </div>
 
           <div class="col-md-4">
-            <div class="card mb-4 shadow-sm custom-card cursor-active" id="relatedProducts2">
+            <div class="card-body mb-4 shadow-sm custom-card cursor-active" id="relatedProducts2">
               <img class="card-img-top" src="" alt="Producto relacionado" />
-              <h3 class="m-3 text-center text-black">nombre producto</h3>
+              <h3 class="m-3 text-center">nombre producto</h3>
             </div>
           </div>
 
@@ -201,6 +205,7 @@
         <div></div>
       </div>
     </div>
+    
     <script type="module" src="js/bootstrap.bundle.min.js"></script>
     <script type="module" src="js/init.js"></script>
     <script type="module" src="js/product-info.js"></script>

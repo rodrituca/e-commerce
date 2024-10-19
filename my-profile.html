@@ -46,7 +46,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav w-100 justify-content-between">
+          <ul class="navbar-nav w-100 d-flex justify-content-between align-items-center">
             <li class="nav-item">
               <a class="nav-link" href="index.html">Inicio</a>
             </li>
@@ -63,9 +63,9 @@
                   <a class="nav-link" id="user"></a>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="">Mi carrito</a></li>
+                  <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
                   <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
-                  <li><a class="dropdown-item" href="login.html">Cerrar sesión</a></li>
+                  <li><a class="dropdown-item" id="logout" href="login.html">Cerrar sesión</a></li>
                 </ul>
               </div>
             </li>
@@ -77,23 +77,27 @@
     <!-- Título -->
     <div class="container text-center mt-3">
       <h4 class="alert-heading mb-3">Perfil de Usuario</h4>
+
       <!-- Círculo para la foto de perfil -->
          <div class="d-flex justify-content-center"> 
-        <div class="rounded-circle border border-dark mx-auto" style="width: 150px; height: 150px; background-color: #f8f9fa;">
+        <div class="rounded-circle border border-dark mx-auto" style="width: 150px; height: 150px; background-color: #f8f9fa; position: relative;">
       <!-- Agregado de la foto -->
-          <img src="Foto de perfil.webp" alt="Foto de perfil" class="rounded-circle" style="width: 100%; height: 100%; object-fit: cover;">
+          <img id="perfil" src="Foto de perfil.webp" alt="Foto de perfil" class="rounded-circle" style="width: 100%; height: 100%; object-fit: cover;">
+          <input type="file" id="fileInput" accept="image/*" 
+          style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: 0; cursor: pointer;">
         </div>
       </div>
     </div>
 
       <!--Estructura del formulario-->
       <div class="container mt-5">
-      <form>
+      <form id="userInfo" novalidate>
         <div class="row">
           <!-- Nombre -->
           <div class="col-md-6 mb-3">
             <label for="nombre">Nombre</label>
             <input type="text" class="form-control" id="nombre" placeholder="Escribe aquí..." aria-label="Nombre">
+            <div class="invalid-feedback">Ingrese su nombre</div>
           </div>
   
           <!--Segundo nombre -->
@@ -106,6 +110,7 @@
           <div class="col-md-6 mb-3">
             <label for="apellido">Apellido</label>
             <input type="text" class="form-control" id="apellido" placeholder="Escribe aquí..." aria-label="Apellido">
+            <div class="invalid-feedback">Ingrese su apellido</div>
           </div>
   
           <!--Segundo apellido -->
@@ -117,7 +122,8 @@
           <!--E-mail -->
           <div class="col-md-6 mb-3">
             <label for="email">E-mail</label>
-            <input type="email" class="form-control" id="email" placeholder="Escribe aquí..." aria-label="E-mail">
+            <input type="text" class="form-control" id="email" placeholder="Escribe aquí..." aria-label="E-mail">
+            <div class="invalid-feedback">Ingrese su e-mail</div>
           </div>
   
           <!--Teléfono-->
@@ -129,7 +135,7 @@
   
         <!--Botón-->
         <div class="d-flex justify-content-center">
-          <button type="submit" class="btn btn-warning text-white">Guardar cambios</button>
+          <button id="btnSaveChanges" type="submit" class="btn btn-warning text-white">Guardar cambios</button>
         </div>
       </form>
     </div>
