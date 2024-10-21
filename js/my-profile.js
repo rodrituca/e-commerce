@@ -23,6 +23,7 @@ document.getElementById('logout').addEventListener('click', function() {
   document.getElementById('perfil').src = "Foto de perfil.webp"; // Vuelve a la imagen por defecto
 });
 
+//Función para guardar los cambios
 function saveChanges(){
   const botoncito = document.getElementById('btnSaveChanges');
   botoncito.addEventListener("click", function(){
@@ -38,6 +39,9 @@ window.onload = function() {
   }
   saveChanges();
 };
+
+//Campo e-mail ya completo con el nombre de usuario que se utilizó al loguearse
+document.getElementById('email').value=sessionStorage.getItem('user');
 
 //Validación de datos obligatorios
 const nombre = document.getElementById('nombre');
