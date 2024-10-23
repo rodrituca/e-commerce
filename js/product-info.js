@@ -33,8 +33,6 @@ if (modoDiaNoche === 'noche') {
 // Función para cambiar el modo día/noche
 function cambiar() {
   const activado = switchButton.checked;
-  
-  // Seleccionar todas las card-body y card-header
   const cardBodies = document.querySelectorAll('.card-body');
   const cardHeaders = document.querySelectorAll('.card-header');
 
@@ -61,6 +59,7 @@ function cambiar() {
 
   // Si no está activado = modo claro
   } else {
+
     // Cambiar el modo del body a claro
     document.body.classList.remove('bg-dark', 'text-white');
     document.body.classList.add('bg-light', 'text-dark');

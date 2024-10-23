@@ -20,7 +20,7 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
 // Función para eliminar la imagen guardada al cerrar sesión
 document.getElementById('logout').addEventListener('click', function() {
   localStorage.removeItem('saveImage'); // Borra la imagen de localStorage
-  document.getElementById('perfil').src = "Foto de perfil.webp"; // Vuelve a la imagen por defecto
+  document.getElementById('perfil').src = "img/Foto de perfil.webp"; // Vuelve a la imagen por defecto
 });
 
 function saveChanges(){
@@ -117,3 +117,6 @@ function cerrarSesion() {
 // Asociar la función de cerrar sesión al clic del enlace de cerrar sesión
 const logoutButton = document.getElementById('logout');
 logoutButton.addEventListener('click', cerrarSesion);
+
+//Pa que venga predefinido el campo email
+document.getElementById('email').value = sessionStorage.getItem('user')
