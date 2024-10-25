@@ -235,3 +235,19 @@ a.custom-card:hover {
   color: #212529;
 }
 
+/*Diseño carrito de compras*/
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 80px;
+}
+
+.card {
+  width: 800px; /* Ancho fijo para la card */
+  height: 150px; /* Altura fija */
+}
+
+.cart-summary {
+  flex: 1;
+  margin-left: 20px;
+}

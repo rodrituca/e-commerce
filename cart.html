@@ -1,117 +1,78 @@
 <!doctype html>
 <html lang="es">
-  <head>
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>eMercado - Todo lo que busques está aquí</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/font-awesome.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
-  </head>
+</head>
 
-  <body>
+<body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-      <div class="container">
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav w-100 d-flex justify-content-between align-items-center">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="categories.html">Categorías</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="sell.html">Vender</a>
-            </li>
-           <!--Menú desplegable con el nombre de usuario-->
-           <li class="nav-item">
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <a class="nav-link" id="user"></a>
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
-                <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
-                <li><a class="dropdown-item" href="login.html">Cerrar sesión</a></li>
-              </ul>
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav w-100 d-flex justify-content-between align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="categories.html">Categorías</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sell.html">Vender</a></li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link" id="user"></a>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+                                <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+                                <li><a class="dropdown-item" href="login.html">Cerrar sesión</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
             </div>
-          </li>
-          </ul>
         </div>
-      </div>
     </nav>
 
-    <main>
-          <!-- Carrito de compra -->
-      <h1>Mi Carrito (Esplendido)</h1>
-      <div class="card mb-3" style="max-width: 540px;">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src="img/cat102_1.jpg" class="img-fluid rounded-start" alt="...">
-          </div>
-
-                <!-- Cajita de productos -->
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">Pelotita</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+    <!-- Carrito de compra -->
+    <h1 class="text-center mt-4">Carrito de compras</h1>
+    <main class="main-container">
+        <div id="idCart" class="card me-3 ms-5" style="width: 800px; height: 150px;">
+        </div>
+    
+        <!-- Cajita de impuestos -->
+        <div class="card cart-summary" style="min-width: 300px; max-width: 300px; height: 300px;"> <!-- Ajustar la altura aquí -->
+            <div class="card-body d-flex flex-column justify-content-between" style="height: 100%;">
+                <div>
+                    <h5 class="card-title">Resumen del pedido</h5>
+                    <p class="card-text">Productos</p>
+                    <p class="card-text">Impuestos (Esplendido).</p>
+                </div>
+                <p class="card-text mt-auto">Total</p>
+                <a href="#" class="btn btn-warning mt-auto mx-auto" style="width: 180px;">Confirmar Compra</a>
             </div>
-          </div>
         </div>
-      </div>
-
-            <!-- Cajitas de impuestos -->
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Resumen del pedido</h5>
-          <p class="card-text">Impuestos (Esplendido).</p>
-          <a href="#" class="btn btn-warning">Confirmar Compra</a>
-        </div>
-      </div>
     </main>
+    
+    
 
     <footer class="text-muted">
-      <div class="container">
-        <p class="float-end">
-          <a href="#">Volver arriba</a>
-        </p>
-        <p>
-          Este sitio forma parte de
-          <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
-            >Jovenes a Programar</a
-          >
-        </p>
-      </div>
+        <div class="container">
+            <p class="float-end"><a href="#">Volver arriba</a></p>
+            <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+        </div>
     </footer>
     <div id="spinner-wrapper">
-      <div class="lds-ring">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+        <div class="lds-ring">
+            <div></div><div></div><div></div><div></div>
+        </div>
     </div>
     <script type="module" src="js/bootstrap.bundle.min.js"></script>
     <script type="module" src="js/init.js"></script>
     <script type="module" src="js/cart.js"></script>
-  </body>
+</body>
 </html>
