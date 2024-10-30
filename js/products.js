@@ -53,6 +53,7 @@ function showProducts(data) {
     </div>
     `;
 
+    
     // Añadir el producto al contenedor
     contenedorProductos.appendChild(articulo);
   });

@@ -193,6 +193,42 @@ document.querySelectorAll('.rating span').forEach((star, index) => {
 
 });})
 
+//Boton de compra
+const btnComprar = document.getElementById("btnComprar");
+btnComprar.addEventListener("click", async () => {
+    const productID = localStorage.getItem('productID'); // Obtén el ID del producto
+    const dataJSON = await getJSONData(PRODUCT_INFO_URL + productID + EXT_TYPE);
+    const { data } = dataJSON;
+
+    // Crea un objeto del producto usando los datos obtenidos
+    const newProduct = {
+        id: data.id,
+        name: data.name,
+        price: data.cost,
+        quantity: 1 // Inicializa la cantidad en 1
+    };
+
+    // Obtiene los productos del carrito
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    // Verifica si el producto ya está en el carrito
+    const existingProductIndex = cartItems.findIndex(item => item.id === productID);
+    if (existingProductIndex > -1) {
+        // Si ya existe, solo incrementa la cantidad
+        cartItems[existingProductIndex].quantity += 1;
+    } else {
+        // Si no existe, agrégalo al carrito
+        cartItems.push(newProduct);
+    }
+
+    // Guarda el carrito actualizado en localStorage
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+    // Redirige a la página del carrito
+    window.location.href = "cart.html";
+});
+
+
 // Obtener estrellitas de calificaciones
 function obtenerEstrellas(calificacion){
   let estrellas = "";

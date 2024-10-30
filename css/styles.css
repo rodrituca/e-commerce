@@ -242,7 +242,7 @@ a.custom-card:hover {
   margin: 80px;
 }
 
-.card {
+.cardSummary {
   width: 800px; /* Ancho fijo para la card */
   height: 150px; /* Altura fija */
 }
