@@ -251,3 +251,10 @@ a.custom-card:hover {
   flex: 1;
   margin-left: 20px;
 }
+
+.custom-badge {
+  background-color: #28a745; /* Verde personalizado */
+  color: white; /* Color del texto */
+  padding: 0.5em 0.75em; /* Ajusta el padding */
+  border-radius: 1em; /* Bordes redondeados */
+}
