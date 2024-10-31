@@ -25,3 +25,10 @@ function showUsername() {
   const username = sessionStorage.getItem('user');
   document.querySelector('#user').innerHTML = username;
 }
+
+function showBadge() {
+const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+const cartBadge = document.getElementById("cartBadge");
+cartBadge.innerHTML = cartItems.length;
+}
+showBadge()
