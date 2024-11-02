@@ -259,11 +259,12 @@ a.custom-card:hover {
   border-radius: 1em; /* Bordes redondeados */
 }
 
-input[type=number]::-webkit-inner-spin-button,
-    input[type=number]::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-    .form-control {
-        height: 30px; /* Ajusta la altura */
-    }
+.custom-spin-button::-webkit-inner-spin-button,
+.custom-spin-button::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.custom-spin-button {
+    height: 30px; /* Ajusta la altura */
+}
