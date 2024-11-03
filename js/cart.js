@@ -9,6 +9,18 @@ async function renderCart() {
     cart.innerHTML = '';
     let totalPrice = 0;
 
+    if (cartItems.length === 0) {
+        const emptyCartMessage = document.createElement('div');
+        emptyCartMessage.className = 'col-md-8 mb-3 mx-auto d-flex justify-content-center text-center';
+        emptyCartMessage.style = 'border: 1px solid #ccc; text-center, border-radius: 5px; padding: 10px; width: 90%; text-align: center; background-color: #f9f9f9, d-flex, justify-content-center;';
+        emptyCartMessage.innerHTML = '<h2>Su carrito se encuentra vacío.</h2>';
+        
+        cart.appendChild(emptyCartMessage);
+        document.getElementById("finalPrice").innerText = `Precio total: 0`;
+        return;
+    }
+
+
     for (const item of cartItems) {
     const productData = await (await fetch(PRODUCT_INFO_URL + item.id + EXT_TYPE)).json();
 
