@@ -26,6 +26,7 @@ function showUsername() {
   document.querySelector('#user').innerHTML = username;
 }
 
+//Función para mostrar la Badge del carrito
 function showBadge() {
 const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 const cartBadge = document.getElementById("cartBadge");
