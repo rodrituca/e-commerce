@@ -126,3 +126,22 @@ elementos.innerHTML = `<div class="accordion" id="accordionExample">
 </div>
 </div>`
 });
+
+//Funcionalidad del acordeón
+document.getElementById('nextToShipping').addEventListener('click', () => {
+  // Avanzar a la siguiente sección (Dirección de envío)
+  document.getElementById('collapseCart').classList.remove('show');
+  document.getElementById('collapseOne').classList.add('show');
+});
+
+document.getElementById('nextToShippingMethod').addEventListener('click', () => {
+  // Avanzar a la siguiente sección (Tipo de envío)
+  document.getElementById('collapseOne').classList.remove('show');
+  document.getElementById('collapseTwo').classList.add('show');
+});
+
+document.getElementById('nextToPayment').addEventListener('click', () => {
+  // Avanzar a la siguiente sección (Forma de pago)
+  document.getElementById('collapseTwo').classList.remove('show');
+  document.getElementById('collapseThree').classList.add('show');
+});

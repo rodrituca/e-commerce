@@ -50,88 +50,113 @@
 <!-- Carrito de compra -->
 <h1 class="text-center mt-4">Carrito de compras</h1>
 <main class="main-container">
-<div id="idCart" > </div>
-    
-
-
-        <!-- Cajita de impuestos -->
-        <div class="card cart-summary" style="min-width: 300px; max-width: 300px; height: 300px;"> 
-            <div class="card-body d-flex flex-column justify-content-between" style="height: 100%;">
-                <div>
-                    <h5 class="card-title">Resumen del pedido</h5>
-                    <p class="card-text">Impuestos (Esplendido).</p>
-                </div>
-                <div class="text-center">
-                <p class="card-text mt-auto text-center" id="finalPrice">Total:</p>
-                <a id="confirmBtn" class="btn btn-warning mt-auto mx-auto" style="width: 180px;">Confirmar Compra</a>
-                </div>
+  <div class="row">
+    <!-- Sección del acordeón (ocupa 8 columnas en pantallas grandes) -->
+    <div class="col-lg-8 col-12">
+      <div class="accordion" id="accordionExample">
+        <!-- Card de productos (primera sección del acordeón) -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCart" aria-expanded="true" aria-controls="collapseCart">
+              Mi carrito
+            </button>
+          </h2>
+          <div id="collapseCart" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div class="accordion-body" id="idCart">
+             
+              
+              <!-- Más productos según sea necesario -->
             </div>
+            <button type="button" class="btn btn-primary" id="nextToShipping">Siguiente</button>
+          </div>
         </div>
 
+        <!-- Dirección de envío -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+              1. Dirección de envío
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="mb-3">
+                Departamento <input type="text" class="form-control">
+              </div>
+              <div class="mb-3">
+                Localidad <input type="text" class="form-control">
+              </div>
+              <div class="mb-3">
+                Calle <input type="text" class="form-control">
+              </div>
+              <div class="mb-3">
+                Número <input type="text" class="form-control">
+              </div>
+              <div class="mb-3">
+                Esquina <input type="text" class="form-control">
+              </div>
+              <button type="button" class="btn btn-primary" id="nextToShippingMethod">Siguiente</button>
+            </div>
+          </div>
+        </div>
 
-        <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  1. Dirección de envío
-                </button>
-              </h2>
-              <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <div class="mb-3">
-                        Departamento <input type="text" class="form-control">
-                      </div>
-                      <div class="mb-3">
-                        Localidad <input type="text" class="form-control" >
-                      </div>
-                      <div class="mb-3">
-                       Calle <input type="text" class="form-control">
-                      </div>
-                      <div class="mb-3">
-                       Número <input type="text" class="form-control" >
-                      </div>
-                      <div class="mb-3">
-                      Esquina <input type="text" class="form-control">
-                      </div>
-                  <button type="button" class="btn btn-primary">Siguiente</button>
-                </div>
+        <!-- Tipo de envío -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              2. Tipo de envío
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="mb-3">
+                Tipo de envío <input type="text" class="form-control">
               </div>
+              <button type="button" class="btn btn-primary" id="nextToPayment">Siguiente</button>
             </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  2. Tipo de envío
-                </button>
-              </h2>
-              <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <div class="mb-3">
-                      Tipo de envío <input type="text" class="form-control">
-                      </div>
-                    <button type="button" class="btn btn-primary">Siguiente</button>
-                </div>
+          </div>
+        </div>
+
+        <!-- Forma de pago -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              3. Forma de pago
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="mb-3">
+                Forma de pago <input type="text" class="form-control">
               </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  3. Forma de pago
-                </button>
-              </h2>
-              <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <div class="mb-3">
-                        Forma de pago <input type="text" class="form-control">
-                      </div>
-                      <div class="mb-3">
-                        Num. Tarjeta <input type="text" class="form-control" >
-                      </div>
-                      CVV  <input type="number" class="form-control mx-1">
-                   <button type="button" class="btn btn-primary">Siguiente</button>
-                </div>
+              <div class="mb-3">
+                Num. Tarjeta <input type="text" class="form-control">
               </div>
+              CVV <input type="number" class="form-control mx-1">
+              <button type="button" class="btn btn-primary">Finalizar compra</button>
             </div>
-            </div>`
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Cajita de impuestos (al costado derecho del acordeón, ocupa 4 columnas en pantallas grandes) -->
+    <div class="col-lg-4 col-12">
+      <div class="card cart-summary" style="min-width: 300px; max-width: 300px; height: 300px;"> 
+        <div class="card-body d-flex flex-column justify-content-between" style="height: 100%;">
+          <div>
+            <h5 class="card-title">Resumen del pedido</h5>
+            <p class="card-text">Impuestos (Esplendido).</p>
+          </div>
+          <div class="text-center">
+            <p class="card-text mt-auto text-center" id="finalPrice">Total:</p>
+            <a id="confirmBtn" class="btn btn-warning mt-auto mx-auto" style="width: 180px;">Confirmar Compra</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
     </main>
     
     
