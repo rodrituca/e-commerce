@@ -29,7 +29,7 @@ async function renderCart() {
             totalPrice += productData.cost * item.quantity;
             const productDiv = document.createElement('div');
             productDiv.className = 'col-md-8 mb-3 mx-auto';
-            productDiv.style = 'border: 1px solid #ccc; border-radius: 5px; padding: 10px; width: 80%;';
+            productDiv.style = 'border: 1px solid #ccc; border-radius: 5px; padding: 10px; width: 90%;';
             productDiv.innerHTML = `
                 <div class="row g-0 h-100" data-id="${item.id}">
                 <div class="col-md-4 p-0 position-relative d-flex align-items-center" style="height: 150px;"> 

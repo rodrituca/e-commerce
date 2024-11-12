@@ -51,7 +51,6 @@
 <h1 class="text-center mt-4">Carrito de compras</h1>
 <main class="main-container">
   <div class="row">
-    <!-- Sección del acordeón (ocupa 8 columnas en pantallas grandes) -->
     <div class="col-lg-8 col-12">
       <div class="accordion" id="accordionExample">
         <!-- Card de productos (primera sección del acordeón) -->
@@ -110,7 +109,12 @@
           <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
             <div class="accordion-body">
               <div class="mb-3">
-                Tipo de envío <input type="text" class="form-control">
+                <select class="form-select form-select-sm" aria-label="Small select example">
+                  <option value="" selected disabled>Seleccionar tipo de envío...</option>
+                  <option value="1">Standard - 12 a 15 días (5%) </option>
+                  <option value="2">Express - 5 a 8 días (7%) </option>
+                  <option value="3">Premium - 2 a 5 días (15%)</option>
+                </select>
               </div>
               <button type="button" class="btn btn-primary" id="nextToPayment">Siguiente</button>
             </div>
@@ -127,7 +131,12 @@
           <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
             <div class="accordion-body">
               <div class="mb-3">
-                Forma de pago <input type="text" class="form-control">
+                <select class="form-select form-select-sm" aria-label="Small select example">
+                  <option value="" selected disabled>Seleccionar forma de pago...</option>
+                  <option value="1">Visa </option>
+                  <option value="2">MasterCard </option>
+                  <option value="3">PayPal</option>
+                </select>
               </div>
               <div class="mb-3">
                 Num. Tarjeta <input type="text" class="form-control">
