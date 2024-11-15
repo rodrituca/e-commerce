@@ -1,5 +1,6 @@
 import getJSONData from './utils/getJSONData.js';
 import { PRODUCT_INFO_URL, EXT_TYPE } from './constants/API.js';
+import showBadge from './init.js';
 
 document.addEventListener('DOMContentLoaded', async function () {
 const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -59,89 +60,155 @@ const btnMenos = productDiv.querySelector('.btnMenos');
 
     btnEliminar.addEventListener('click', () => {
     cartItems.splice(cartItems.indexOf(item), 1);
-    updateCart(); });
+    updateCart();
+    showBadge(); });
 
     btnMas.addEventListener('click', () => {
     item.quantity++;
-    updateCart(); });
+    updateCart();
+    showBadge(); });
 
     btnMenos.addEventListener('click', () => {
     if (item.quantity > 1) {
     item.quantity--;
-    updateCart(); }});
+    updateCart();
+    showBadge(); }});
     
 }
 }
 
-    document.getElementById("finalPrice").innerText = `Precio total: ${totalPrice} ${cartItems[0]?.currency || ''}`;
+
+const impuesto = (parseInt(totalPrice) * parseFloat(shippingType.value));
+document.getElementById("finalPrice").innerText = `Subtotal: ${totalPrice + impuesto} ${cartItems[0]?.currency || ''}`;
+
+//Atado con alambre provisionalmente hasta llegar a nuestro destino
+document.getElementById("shippingType").addEventListener("click", () => {
+const impuesto = (parseInt(totalPrice) * parseFloat(shippingType.value));
+document.getElementById("finalPrice").innerText = `Subtotal: ${totalPrice + impuesto} ${cartItems[0]?.currency || ''}`;;
+  })
+
+
     }
 
     function updateCart() {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
     renderCart(); }
     await renderCart();
+    showBadge();
 });
 
-//
-const confirmBtn = document.getElementById("confirmBtn")
 
-confirmBtn.addEventListener("click", () => {
-const elementos = document.createElement("div");
-elementos.innerHTML = `<div class="accordion" id="accordionExample">
-<div class="accordion-item">
-  <h2 class="accordion-header">
-    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-      Accordion Item #1
-    </button>
-  </h2>
-  <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-    <div class="accordion-body">
-      <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-    </div>
-  </div>
-</div>
-<div class="accordion-item">
-  <h2 class="accordion-header">
-    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-      Accordion Item #2
-    </button>
-  </h2>
-  <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-    <div class="accordion-body">
-      <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-    </div>
-  </div>
-</div>
-<div class="accordion-item">
-  <h2 class="accordion-header">
-    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-      Accordion Item #3
-    </button>
-  </h2>
-  <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-    <div class="accordion-body">
-      <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-    </div>
-  </div>
-</div>
-</div>`
-});
+// Validación de campos
+const city = document.getElementById('dpto');
+const location = document.getElementById('localidad');
+const street = document.getElementById('calle');
+const number = document.getElementById('num');
+const corner = document.getElementById('esq');
+const requiredFields = [city, location, street, number, corner];
 
-//Funcionalidad del acordeón
+// Comprobar si los campos obligatorios están vacíos
+function validation() {
+  let valid = true;
+ 
+  requiredFields.forEach(input => {
+    if (input.value.trim() === "") {
+      input.classList.remove('is-valid')
+      input.classList.add("is-invalid");
+      valid = false;
+    } else {
+     input.classList.add('is-valid')
+      input.classList.remove("is-invalid");
+    }
+  });
+  return valid;
+}
+const shippingType = document.getElementById('shippingType')
+function selectedField(){
+  let valid = true;
+  if (shippingType.value){
+return valid
+  } else {
+    shippingType.classList.remove('is-valid')
+    shippingType.classList.add("is-invalid");
+return false
+  }
+};
+
+function paymentMethodSelect(){
+  const paymentMethod = document.getElementById('paymentMethod')
+
+  let valid = true;
+  if (paymentMethod.value){
+    paymentMethod.classList.add('is-valid')
+    paymentMethod.classList.remove("is-invalid");
+return valid
+  } else {
+    paymentMethod.classList.remove('is-valid')
+    paymentMethod.classList.add("is-invalid");
+return false
+  }
+};
+
+function cardValidation() {
+  let valid = true;
+
+  const cardNum = document.getElementById('numTar')
+  const cvv = document.getElementById('cvv')
+  const fv = document.getElementById('fv')
+  const required = [cardNum, cvv, fv];
+
+
+  required.forEach(input => {
+    if (input.value.trim() === "") {
+      input.classList.remove('is-valid')
+      input.classList.add("is-invalid");
+      valid = false;
+    } else {
+     input.classList.add('is-valid')
+      input.classList.remove("is-invalid");
+    }
+  });
+  return valid;
+};
+
+
+// Funcionalidad del acordeón
 document.getElementById('nextToShipping').addEventListener('click', () => {
   // Avanzar a la siguiente sección (Dirección de envío)
   document.getElementById('collapseCart').classList.remove('show');
   document.getElementById('collapseOne').classList.add('show');
 });
 
-document.getElementById('nextToShippingMethod').addEventListener('click', () => {
-  // Avanzar a la siguiente sección (Tipo de envío)
-  document.getElementById('collapseOne').classList.remove('show');
-  document.getElementById('collapseTwo').classList.add('show');
+document.getElementById('nextToShippingMethod').addEventListener('click', (event) => {
+  // Comprobar la validación antes de avanzar
+  if (validation()) {
+    // Si la validación es correcta, avanza a la siguiente sección (Tipo de envío)
+    document.getElementById('collapseOne').classList.remove('show');
+    document.getElementById('collapseTwo').classList.add('show');
+  } else {
+    // Si la validación falla, prevenir que se avance
+    event.preventDefault();
+  }
 });
 
-document.getElementById('nextToPayment').addEventListener('click', () => {
+document.getElementById('nextToPayment').addEventListener('click', (event) => {
   // Avanzar a la siguiente sección (Forma de pago)
+if (selectedField()){
   document.getElementById('collapseTwo').classList.remove('show');
   document.getElementById('collapseThree').classList.add('show');
+} else {
+  event.preventDefault();
+}
 });
+
+const confirmBtn = document.getElementById('confirmBtn')
+confirmBtn.addEventListener('click', (event) => {
+  let valid = true;
+  if (paymentMethodSelect() && cardValidation()){
+    alert("Tu compra fue exitosa!!! gracias!!! te queremos!!!")
+    return valid;
+  }else{
+    event.preventDefault();
+  }
+});
+

@@ -26,10 +26,11 @@ function showUsername() {
   document.querySelector('#user').innerHTML = username;
 }
 
-//Función para mostrar la Badge del carrito
+export default function showBadge() {
 function showBadge() {
-const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-const cartBadge = document.getElementById("cartBadge");
-cartBadge.innerHTML = cartItems.length;
-}
-showBadge()
+  const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+  const cartBadge = document.getElementById("cartBadge");
+  let cartContent = parseInt('0');
+  cartItems.forEach(item => {cartContent += parseInt(item.quantity);});
+  cartBadge.innerHTML = parseInt(cartContent); }
+  showBadge();}

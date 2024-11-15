@@ -62,9 +62,7 @@
           </h2>
           <div id="collapseCart" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
             <div class="accordion-body" id="idCart">
-             
-              
-              <!-- Más productos según sea necesario -->
+
             </div>
             <button type="button" class="btn btn-primary" id="nextToShipping">Siguiente</button>
           </div>
@@ -80,19 +78,34 @@
           <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
             <div class="accordion-body">
               <div class="mb-3">
-                Departamento <input type="text" class="form-control">
+                Departamento <input type="text" class="form-control" id="dpto" required>
+                <div class="invalid-feedback">
+                  Debe completar este campo
+                </div>
               </div>
               <div class="mb-3">
-                Localidad <input type="text" class="form-control">
+                Localidad <input type="text" class="form-control" id="localidad" required>
+                <div class="invalid-feedback">
+                  Debe completar este campo
+                </div>
               </div>
               <div class="mb-3">
-                Calle <input type="text" class="form-control">
+                Calle <input type="text" class="form-control" id="calle" required>
+                <div class="invalid-feedback">
+                  Debe completar este campo
+                </div>
               </div>
               <div class="mb-3">
-                Número <input type="text" class="form-control">
+                Número <input type="text" class="form-control" id="num" required>
+                <div class="invalid-feedback">
+                  Debe completar este campo
+                </div>
               </div>
               <div class="mb-3">
-                Esquina <input type="text" class="form-control">
+                Esquina <input type="text" class="form-control" id="esq" required>
+                <div class="invalid-feedback">
+                  Debe completar este campo
+                </div>
               </div>
               <button type="button" class="btn btn-primary" id="nextToShippingMethod">Siguiente</button>
             </div>
@@ -109,12 +122,15 @@
           <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
             <div class="accordion-body">
               <div class="mb-3">
-                <select class="form-select form-select-sm" aria-label="Small select example">
-                  <option value="" selected disabled>Seleccionar tipo de envío...</option>
-                  <option value="1">Standard - 12 a 15 días (5%) </option>
-                  <option value="2">Express - 5 a 8 días (7%) </option>
-                  <option value="3">Premium - 2 a 5 días (15%)</option>
+                <select class="form-select form-select-sm" aria-label="Small select example" id="shippingType">
+                  <option value="0" selected disabled>Seleccionar tipo de envío...</option>
+                  <option value="0.05">Standard - 12 a 15 días (5%)</option>
+                  <option value="0.07">Express - 5 a 8 días (7%) </option>
+                  <option value="0.15">Premium - 2 a 5 días (15%)</option>
                 </select>
+                <div class="invalid-feedback">
+                  Debes seleccionar el tipo de envío
+                </div>
               </div>
               <button type="button" class="btn btn-primary" id="nextToPayment">Siguiente</button>
             </div>
@@ -131,18 +147,30 @@
           <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
             <div class="accordion-body">
               <div class="mb-3">
-                <select class="form-select form-select-sm" aria-label="Small select example">
+                <select class="form-select form-select-sm" aria-label="Small select example" id="paymentMethod">
                   <option value="" selected disabled>Seleccionar forma de pago...</option>
                   <option value="1">Visa </option>
                   <option value="2">MasterCard </option>
                   <option value="3">PayPal</option>
                 </select>
+                <div class="invalid-feedback">
+                  Debes seleccionar la forma de pago
+                </div>
               </div>
               <div class="mb-3">
-                Num. Tarjeta <input type="text" class="form-control">
+                Num. Tarjeta <input type="text" class="form-control" id="numTar" minlength="16" required>
+                <div class="invalid-feedback">
+                  Debes completar el número de tarjeta
+                </div>
               </div>
-              CVV <input type="number" class="form-control mx-1">
-              <button type="button" class="btn btn-primary">Finalizar compra</button>
+              CVV <input type="text" class="form-control" id="cvv" minlenght="3" required>
+              <div class="invalid-feedback">
+                Debes completar el código de seguridad
+              </div>
+              Vto. <input type="text" class="form-control" id="fv" required>
+              <div class="invalid-feedback">
+                Debes completar la fecha de vencimiento
+              </div>
             </div>
           </div>
         </div>
@@ -160,15 +188,13 @@
           </div>
           <div class="text-center">
             <p class="card-text mt-auto text-center" id="finalPrice">Total:</p>
-            <a id="confirmBtn" class="btn btn-warning mt-auto mx-auto" style="width: 180px;">Confirmar Compra</a>
+            <a id="confirmBtn" class="btn btn-warning mt-auto mx-auto" style="width: 180px;">Finalizar Compra</a>
           </div>
         </div>
       </div>
     </div>
   </div>
     </main>
-    
-    
 
     <footer class="text-muted">
         <div class="container">

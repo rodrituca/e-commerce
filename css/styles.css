@@ -274,3 +274,17 @@ a.custom-card:hover {
   max-width: 700px; 
  
 }
+
+#cvv {
+  text-align: center; /* Centra el texto dentro del campo */
+  font-size: 14px; /* Ajusta el tamaño de la fuente */
+  padding: 5px; /* Relleno interno para que el texto no esté pegado al borde */
+  width: 8%;
+}
+
+#fv {
+  text-align: center; /* Centra el texto dentro del campo */
+  font-size: 14px; /* Ajusta el tamaño de la fuente */
+  padding: 5px; /* Relleno interno para que el texto no esté pegado al borde */
+  width: 8%;
+}
