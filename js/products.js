@@ -2,6 +2,8 @@ import getJSONData from './utils/getJSONData.js';
 import addEvents from './utils/addEvents.js';
 import { sortList, options } from './utils/sortList.js';
 import { PRODUCTS_URL, EXT_TYPE } from './constants/API.js';
+import showBadge from './init.js';
+showBadge();
 
 let data = [];
 

@@ -1,4 +1,6 @@
 import getJSONData from './utils/getJSONData.js';
+import showBadge from './init.js';
+showBadge();
 
 import { PRODUCT_INFO_URL, EXT_TYPE, PRODUCT_INFO_COMMENTS_URL} from './constants/API.js';
 

@@ -1,3 +1,5 @@
+import showBadge from "./init";
+
 //Funcionalidad para agregar foto de perfil
 document.getElementById('fileInput').addEventListener('change', function(event) {
   const file = event.target.files[0]; // Obtiene el archivo seleccionado
@@ -120,3 +122,5 @@ logoutButton.addEventListener('click', cerrarSesion);
 
 //Pa que venga predefinido el campo email
 document.getElementById('email').value = sessionStorage.getItem('user')
+
+showBadge()

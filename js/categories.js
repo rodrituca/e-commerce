@@ -2,6 +2,8 @@ import { CATEGORIES_URL } from './constants/API.js';
 import getJSONData from './utils/getJSONData.js';
 import addEvents from './utils/addEvents.js';
 import { sortList, options } from './utils/sortList.js';
+import showBadge from './init.js';
+showBadge();
 
 let {
   ORDER_ASC_BY_NAME,
