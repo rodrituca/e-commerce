@@ -125,13 +125,15 @@ function validation() {
 const shippingType = document.getElementById('shippingType')
 function selectedField(){
   let valid = true;
-  if (shippingType.value){
-return valid
+  if (shippingType.value !== "0"){
+    shippingType.classList.add('is-valid')
+    shippingType.classList.remove("is-invalid");
   } else {
     shippingType.classList.remove('is-valid')
     shippingType.classList.add("is-invalid");
-return false
+valid = false;
   }
+  return valid
 };
 
 function paymentMethodSelect(){
@@ -139,14 +141,15 @@ function paymentMethodSelect(){
 
   let valid = true;
   if (paymentMethod.value){
-    paymentMethod.classList.add('is-valid')
+    paymentMethod.classList.add('is-valid');
     paymentMethod.classList.remove("is-invalid");
-return valid
+    valid = true;
   } else {
-    paymentMethod.classList.remove('is-valid')
+    paymentMethod.classList.remove('is-valid');
     paymentMethod.classList.add("is-invalid");
-return false
+    valid = false;
   }
+return valid
 };
 
 function cardValidation() {
