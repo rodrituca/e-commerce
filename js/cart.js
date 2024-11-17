@@ -60,6 +60,7 @@ const btnMenos = productDiv.querySelector('.btnMenos');
 
     btnEliminar.addEventListener('click', () => {
     cartItems.splice(cartItems.indexOf(item), 1);
+    document.getElementById("finalPrice").setAttribute("data-value" , 0);
     updateCart();
     showBadge(); });
 
@@ -80,11 +81,12 @@ const btnMenos = productDiv.querySelector('.btnMenos');
 
 const impuesto = (parseInt(totalPrice) * parseFloat(shippingType.value));
 document.getElementById("finalPrice").innerText = `Subtotal: ${totalPrice + impuesto} ${cartItems[0]?.currency || ''}`;
+document.getElementById("finalPrice").setAttribute("data-value" , `${totalPrice + impuesto}`);
 
 //Atado con alambre provisionalmente hasta llegar a nuestro destino
 document.getElementById("shippingType").addEventListener("click", () => {
 const impuesto = (parseInt(totalPrice) * parseFloat(shippingType.value));
-document.getElementById("finalPrice").innerText = `Subtotal: ${totalPrice + impuesto} ${cartItems[0]?.currency || ''}`;;
+document.getElementById("finalPrice").innerText = `Subtotal: ${totalPrice + impuesto} ${cartItems[0]?.currency || ''}`;
   })
 
 
@@ -204,14 +206,20 @@ if (selectedField()){
 }
 });
 
+
 const confirmBtn = document.getElementById('confirmBtn')
 confirmBtn.addEventListener('click', (event) => {
+  const finalPriceValue = document.getElementById("finalPrice").getAttribute("data-value");
   let valid = true;
-  if (paymentMethodSelect() && cardValidation()){
+  if (paymentMethodSelect() && cardValidation() && finalPriceValue != "0"){
     alert("Tu compra fue exitosa!!! gracias!!! te queremos!!!")
     return valid;
-  }else{
+  }else if(finalPriceValue == "0"){
+    alert("Debe tener almenos un producto en su carrito para proceder con la compra");
     event.preventDefault();
-  }
+  } else if (!paymentMethodSelect() || !cardValidation()) {
+    alert("Debe completar los datos de facturación para poder proceder con la compra");
+    event.preventDefault();
+  };
 });
 
