@@ -2,7 +2,11 @@ import getJSONData from './utils/getJSONData.js';
 import showBadge from './init.js';
 showBadge();
 
-import { PRODUCT_INFO_URL, EXT_TYPE, PRODUCT_INFO_COMMENTS_URL} from './constants/API.js';
+//import { PRODUCT_INFO_URL, PRODUCT_INFO_COMMENTS_URL} from './constants/API.js';
+
+export const PRODUCT_INFO_URL = "http://localhost:3000/productsInfo/";
+
+export const PRODUCT_INFO_COMMENTS_URL = "http://localhost:3000/comments/";
 
 // Botón Switch
 const switchButton = document.getElementById('BtnSwitch');
@@ -91,7 +95,7 @@ switchButton.addEventListener('change', cambiar);
 //Fetch para el carrusel
 document.addEventListener('DOMContentLoaded', async function () {
   const productID = localStorage.getItem('productID');
-  const dataJSON = await getJSONData(PRODUCT_INFO_URL + productID + EXT_TYPE);
+  const dataJSON = await getJSONData(PRODUCT_INFO_URL + productID);
   const { data } = dataJSON;
 
   const productNameHTMLElement = document.querySelector('#productName');
@@ -142,7 +146,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   }
 
 //Mostrar los comentarios
-const dataComments = await getJSONData(PRODUCT_INFO_COMMENTS_URL + productID + EXT_TYPE);
+const dataComments = await getJSONData(PRODUCT_INFO_COMMENTS_URL + productID);
 const { data: comments } = dataComments;
 
 function mostrarComentarios(comentarios) {
@@ -199,7 +203,7 @@ document.querySelectorAll('.rating span').forEach((star, index) => {
 const btnComprar = document.getElementById("btnComprar");
 btnComprar.addEventListener("click", async () => {
     const productID = localStorage.getItem('productID');
-    const dataJSON = await getJSONData(PRODUCT_INFO_URL + productID + EXT_TYPE);
+    const dataJSON = await getJSONData(PRODUCT_INFO_URL + productID);
     const { data } = dataJSON;
 
     // Crea un objeto del producto usando los datos obtenidos

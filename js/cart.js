@@ -1,6 +1,8 @@
 import getJSONData from './utils/getJSONData.js';
-import { PRODUCT_INFO_URL, EXT_TYPE } from './constants/API.js';
+//import { PRODUCT_INFO_URL, EXT_TYPE } from './constants/API.js';
 import showBadge from './init.js';
+
+export const PRODUCT_INFO_URL = "http://localhost:3000/productsInfo/";
 
 document.addEventListener('DOMContentLoaded', async function () {
 const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -24,7 +26,7 @@ async function renderCart() {
 
 
     for (const item of cartItems) {
-    const productData = await (await fetch(PRODUCT_INFO_URL + item.id + EXT_TYPE)).json();
+    const productData = await (await fetch(PRODUCT_INFO_URL + item.id)).json();
 
         if (productData) {
             totalPrice += productData.cost * item.quantity;

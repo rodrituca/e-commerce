@@ -1,8 +1,9 @@
-import { CATEGORIES_URL } from './constants/API.js';
+//import { CATEGORIES_URL } from './app.js';
 import getJSONData from './utils/getJSONData.js';
 import addEvents from './utils/addEvents.js';
 import { sortList, options } from './utils/sortList.js';
 import showBadge from './init.js';
+export const CATEGORIES_URL =  'http://localhost:3000/cats';
 showBadge();
 
 let {
