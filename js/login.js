@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', function () {
 // Botoncito para que no se envíe el formulario
 const submit = document.getElementById('regBtn');
 // Creamos variables con nombres más sencillos para acceder a los inputs
@@ -31,7 +30,7 @@ function createSession() {
 submit.addEventListener('click', function (event) {
   if (validation(event)) {
     createSession();
-    //window.location = 'index.html';
+    window.location = 'index.html';
     return;
   }
 });
