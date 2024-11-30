@@ -1,4 +1,4 @@
-//import { CATEGORIES_URL } from './app.js';
+//import { CATEGORIES_URL } from './constants/API.js';
 import getJSONData from './utils/getJSONData.js';
 import addEvents from './utils/addEvents.js';
 import { sortList, options } from './utils/sortList.js';

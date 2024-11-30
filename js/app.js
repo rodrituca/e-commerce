@@ -5,9 +5,40 @@ const jwt = require("jsonwebtoken");
 const app = express(); //instancia de express
 const port = 3000;
 const cors = require('cors');
+const SECRET_KEY = "Jorgeñ" //ñ para evitar hackers angloparlantes
 app.use(cors({
     origin: 'http://127.0.0.1:5501',
 }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+//POST para obtener el token de sesión
+app.post("/login", (req, res) => {
+    const {username, password} = req.body;
+    if(username ==="admin" && password==="admin"){
+        const token = jwt.sign({username}, SECRET_KEY);
+        res.status(200).json({token});
+    } else {
+        res.status(401).json({message: "Usuario y/o contraseña incorrecto"})
+    }
+});
+
+//middleware para proteger el acceso frente a personas no registradas
+app.use("/index", (req, res, next) =>{
+    try {
+        const decoded = jwt.verify(req.headers["access-token"], SECRET_KEY);
+        console.log(decoded);
+        next();
+    } catch(err) {
+        res.status(401).json({ message: "Usuario no autorizado"})
+    }
+});
+
+
+app.get("/index", (req, res)=>{
+    res.sendFile(path.join(__dirname, "../index.html"))
+});
+
 
 
 //Funcion para mostrar Productos en product info
@@ -60,7 +91,6 @@ const CART_INFO_URL = './emercado-api/user_cart/';
 const CART_BUY_URL = './emercado-api/cart/buy.json';
 const EXT_TYPE = '.json';
 
-
 let cats = require("./emercado-api/cats/cat.json");
 
 app.listen(port, ()=>{
@@ -71,28 +101,9 @@ app.get("/", (req, res) =>{
     res.send("<h1> Bienvenido</h1>")
 });
 
-// Middleware para la categoría CATS jeje
-app.use("/index", (req, res, next) => {
-    const token = req.headers["access-token"];
-    if(!token) {
-        return res.status(401).json({message: "Usuario no autorizado, token faltante"});
-    }
-    try {
-    const decoded = jwt.verify(token, SECRET_KEY);
-    req.user = decoded;
-    next();
-    } catch {
-        res.status(401).json({ message: "Usuario no autorizado" });
-    }
-});
-
-app.get("/index", (req, res) =>{
-    res.redirect('http://localhost:5501/index.html');
-});
-
 app.get("/cats", (req, res) =>{
     res.json(CATEGORIES_URL);
-});
+})
 
 app.get(`/cats/:id`, (req, res)=>{
     const catID = req.params.id;
@@ -136,25 +147,6 @@ app.get(`/comments/:id`, (req, res)=>{
         res.json(productComments);
 });
 
-app.use(express.json());
-const SECRET_KEY = "CLAVE ULTRA SECRETA";
-app.post("/login", (req, res) => {
-const {username, password} = req.body;
-if(username !=="admin" && password !=="admin") {
-const token = jwt.sign({username}, SECRET_KEY);
-res.status(200).json({token});
-} else {
-res.status(401).json({message: "Usuario y/o contraseña incorrectos"})
-}
-});
 
-module.exports = {
-    CATEGORIES_URL,
-    PUBLISH_PRODUCT_URL,
-    PRODUCTS_URL,
-    PRODUCT_INFO_COMMENTS_URL,
-    PRODUCT_INFO_URL,
-    CART_BUY_URL,
-    CART_INFO_URL,
-    EXT_TYPE,
-  };
+
+

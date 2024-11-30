@@ -3,7 +3,7 @@ import addEvents from './utils/addEvents.js';
 import { sortList, options } from './utils/sortList.js';
 //import { PRODUCTS_URL, EXT_TYPE } from './constants/API.js';
 import showBadge from './init.js';
-export const PRODUCTS_URL = "http://localhost:3000/catProducts/"
+export const PRODUCTS_URL = "http://localhost:3000/catProducts/";
 showBadge();
 
 let data = [];
@@ -73,7 +73,7 @@ function deleteDOMElements(className) {
 // Filtro de gabi
 document.addEventListener('DOMContentLoaded', async function () {
   const catID = localStorage.getItem('catID');
-  const jsonData = await getJSONData( PRODUCTS_URL+ catID);
+  const jsonData = await getJSONData(PRODUCTS_URL + catID);
   data = jsonData.data;
 
   showProducts(data);

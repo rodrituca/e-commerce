@@ -2,8 +2,6 @@ import getJSONData from './utils/getJSONData.js';
 import showBadge from './init.js';
 showBadge();
 
-//import { PRODUCT_INFO_URL, PRODUCT_INFO_COMMENTS_URL} from './constants/API.js';
-
 export const PRODUCT_INFO_URL = "http://localhost:3000/productsInfo/";
 
 export const PRODUCT_INFO_COMMENTS_URL = "http://localhost:3000/comments/";
